@@ -1,0 +1,72 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<!--Start Style-->
+<style>
+	.stdinp{
+		width: 80%;
+		height: 50px;
+		border-radius: 5px;
+	}
+	.stdbtn{
+		width: 150px;
+		background: #9d512c;
+		color:#fff;
+	}
+</style>
+<!--End Style-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin:6rem auto;">
+				<div class="card">
+					<div class="card-header text-center text-white" style="background:#9d512c;">
+						<h3>Student Updation Form</h3>
+					</div>
+					<div class="card-body" style="background:lightblue;">
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>First Name</strong></label>
+										<input type="text" name="fname" value="{{std.user.first_name}}" class="form-control">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Last Name</strong></label>
+										<input type="text" name="lname" value="{{std.user.last_name}}" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label><strong>Userame</strong></label>
+								<input type="text" value="{{std.user.username}}" class="form-control" disabled>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Enrollmant Number</strong></label>
+										<input type="text" name="enrlno" value="{{std.enrollment}}" class="form-control">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Branch</strong></label>
+										<input type="text" name="branch" value="{{std.branch}}" class="form-control">
+									</div> 
+								</div>
+							</div>
+							<div class="form-group text-center my-4">
+								<input type="submit" value="Update" class="stdbtn">
+							</div>
+						</form>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% endblock %}

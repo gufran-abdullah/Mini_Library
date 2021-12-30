@@ -1,0 +1,89 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<link rel="stylesheet" type="text/css" href="{% static "datatable/datatables.min.css" %}"/>
+<script type="text/javascript" src="{% static "datatable/datatables.min.js" %}"></script>
+<!--Start Style-->
+<style>
+	.table_head{
+		background: #9d512c;
+		color: #fff;
+	}
+	.del_icon{
+		color: #9d512c;
+		font-size: 20px;
+		margin-left: 5px;
+	}
+	.del_icon:hover{
+		color: #ffc107;
+	}
+	.btn-group{
+		position: relative;
+		top: 32px;
+	}
+	.buttons-html5,.buttons-print{
+		background: #9d512c;
+		color: #fff;
+		border:none;
+	}
+	.buttons-html5:hover,.buttons-print:hover{
+		background: #ffc107;
+		color: #fff;
+	}
+	.dataTables_length{
+		position: relative;
+		top: 20px;
+	}
+</style>
+<!--End Style-->
+	<div class="container">
+		<h1 class="text-center">Manage Books</h1>
+		<div class="row">
+			<div class="col-sm-10" style="margin:1rem auto;">
+				<table class="table table-hover" id="example">
+					<thead class="table_head">
+						<tr>
+							<th>Sr.#</th>
+							<th>Student</th>
+							<th>Book Name</th>
+							<th>Author Name</th>
+							<th>ISBN</th>
+							<th>Issue Date</th>
+							<th>Due Date</th>
+							<th>Actions</th>
+						</tr> 
+					</thead>
+					<tbody>
+						{% for ib in issuebooks %}
+							<tr> 
+								<td>{{forloop.counter}}</td>
+								<td>{{ib.student.user.first_name}} {{ib.student.user.last_name}}</td>
+								<td>{{ib.book.bookname}}</td> 
+								<td>{{ib.book.authorname}}</td>
+								<td>{{ib.book.isbnno}}</td>
+								<td>{{ib.issue_date}}</td> 
+								<td>{{ib.due_date}}</td>   
+								<td> 
+									<a href="{% url 'admin_returnbook' ib.id %}"><i class="fas fa-undo-alt del_icon" onclick="return confirm('Are You Sure To Return The Book?')"></i></a> | 
+									<a href="{% url 'admin_issuebookfine' ib.id %}"><i class="fas fa-file-invoice-dollar del_icon"></i></a>
+								</td> 
+							</tr> 
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function(){
+	$('#example').DataTable({
+		dom: 'lBfrtip',
+		buttons: [
+			'copy','csv','excel','pdf','print'
+		]
+	});
+	});
+</script>
+
+{% endblock %}

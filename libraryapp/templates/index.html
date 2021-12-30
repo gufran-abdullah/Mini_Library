@@ -1,0 +1,61 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<!--Start Style-->
+<style>
+	header{
+		background: url({% static "images/library.jpg" %})no-repeat;
+		background-size: cover;
+		background-position: center center;
+		width:100%;
+		height:100vh;
+	}
+	.transp{
+		width: 100%;
+		height: 100vh;
+		background-color: lightgrey;
+		opacity: 0.5;
+		border:1px solid #9d512c;
+	}
+	.transp p{
+		text-align: center;
+		font-size: 60px;
+		font-weight: bold;
+		font-family: Monotype Corsiva;
+		margin-top: 14%;
+		color: #9d512c;
+	}
+	
+</style>
+<!--End Style-->
+<!--Start Header-->
+	<header>
+		<div class="transp">
+			<p>
+				Online <br> Library Management System
+			</p>
+		</div>
+	</header>
+<!--End Header-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<h2>Administration</h2>
+				<a href="{% url 'admin_login' %}">
+					<img src="{% static "images/admin.png" %}" alt="Admin Image" style="width:400px;height:400px;">
+				</a>
+			</div>
+			<div class="col-sm-6 text-center">
+				<h2>Student</h2>
+				<a href="{% url 'student_login' %}">
+					<img src="{% static "images/student5.png" %}" alt="Student Image" style="width:300px;height:400px;">
+				</a>
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% include 'footer.html' %}
+
+{% endblock %}

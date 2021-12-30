@@ -1,0 +1,57 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<!--Start Style-->
+<style>
+	.fineicon{
+		margin-top: 20px;
+	}
+	.fineicobad{
+		font-size: 130px;
+		color: red; 
+	}
+	.fineicogood{
+		font-size: 130px;
+		color: green; 
+	}
+	.finedesc{
+		margin-top: 30px;
+	}
+</style>
+<!--End Style-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin:4rem auto;">
+				<div class="card text-center">
+					<div class="card-header text-center text-white" style="background:#9d512c;">
+						<h3>Fine Calculation</h3>
+					</div>
+					<div class="card-body" style="background:lightblue;">
+						<div class="fineicon">
+							{% if late == 0 and fine == 0 %}
+								<i class="fas fa-check-circle fineicogood"></i>
+							{% else %}
+								<i class="fas fa-exclamation-triangle fineicobad"></i>
+							{% endif %}
+						</div>
+						<div class="finedesc">
+							<p class="display-4">
+								{% if late <= 1 %}
+									You Have Been {{late}} Day Late.
+								{% else %}
+									You Have Been {{late}} Days Late.
+								{% endif %}
+							</p>
+							<p class="display-5">
+								Your Fine Is : Rs.{{fine}}/-
+							</p>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% endblock %}

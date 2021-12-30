@@ -1,0 +1,53 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<!--Start Style-->
+<style>
+	.stdinp{
+		width: 80%;
+		height: 50px;
+		border-radius: 5px;
+	}
+	.stdbtn{
+		width: 150px;
+		background: #9d512c;
+		color:#fff;
+	}
+	.icc{
+		color: #fff;
+	}
+	.ig{
+		background: #9d512c;
+	}
+</style>
+<!--End Style-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin:10rem auto;">
+				<div class="card">
+					<div class="card-header text-center text-white" style="background:#9d512c;">
+						<h3>Book Category Addition Form</h3>
+					</div>
+					<div class="card-body" style="background:lightblue;">
+						<form method="POST">
+							{% csrf_token %}
+							<div class="form-group">
+								<label><strong>Category</strong></label>
+								<div class="input-group ">
+									<span class="input-group-text ig"><i class="fas fa-list icc"></i></span>
+									<input type="text" class="form-control" placeholder="Enter category..." name="categ" required>
+								</div> 
+							</div>
+							<div class="form-group text-center my-4">
+								<input type="submit" value="Add Category" class="stdbtn">
+							</div>
+						</form>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% endblock %}

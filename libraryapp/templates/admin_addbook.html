@@ -1,0 +1,98 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<!--Start Style-->
+<style>
+	.stdinp{
+		width: 80%;
+		height: 50px;
+		border-radius: 5px;
+	}
+	.stdbtn{
+		width: 150px;
+		background: #9d512c;
+		color:#fff;
+	}
+	.icc{
+		color: #fff;
+	}
+	.ig{
+		background: #9d512c;
+	}
+</style>
+<!--End Style-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin:6rem auto;">
+				<div class="card">
+					<div class="card-header text-center text-white" style="background:#9d512c;">
+						<h3>Book Addition Form</h3>
+					</div>
+					<div class="card-body" style="background:lightblue;">
+						<form method="POST">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Book Name</strong></label>
+										<div class="input-group ">
+											<span class="input-group-text ig"><i class="fas fa-book icc"></i></span>
+											<input type="text" class="form-control" placeholder="Enter book name..." name="bname" required>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group ">
+										<label><strong>Author Name</strong></label>
+								 		<div class="input-group">
+											<span class="input-group-text ig"><i class="fas fa-user icc"></i></span>
+											<input type="text" class="form-control" placeholder="Enter author name..." name="aname" required>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label><strong>Category</strong></label>
+								<div class="input-group ">
+									<span class="input-group-text ig"><i class="fas fa-list icc"></i></span>
+									<select name="categ" class="form-control" required>
+										<option>--- Please Select A Category ---</option>
+										{% for bc in bcats %}
+											<option value="{{bc.name}}">{{bc.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>ISBN</strong></label>
+										<div class="input-group ">
+											<span class="input-group-text ig"><i class="fas fa-list-alt icc"></i></span>
+											<input type="text" class="form-control" placeholder="Enter ISBN..." name="isbn" required>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Quantity</strong></label>
+										<div class="input-group ">
+											<span class="input-group-text ig"><i class="fas fa-newspaper icc"></i></span>
+											<input type="number" class="form-control" placeholder="Enter quantity..." name="qty" required>
+										</div>
+									</div>	
+								</div> 
+							</div>
+							<div class="form-group text-center my-4">
+								<input type="submit" value="Add Book" class="stdbtn">
+							</div>
+						</form>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% endblock %}

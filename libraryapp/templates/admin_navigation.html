@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% load static %}
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+	<script src="{% static "font/all.min.js" %}"></script>
+	<title>Admin | Library Management system</title>
+</head>
+<body>
+	<!--Navigation Start-->
+	<nav class="navbar navbar-expand-xl navbar-dark" aria-label="Sixth navbar example" style="background:#9d512c;">
+      <div class="container">
+      <a class="navbar-brand" href="{% url 'admin_home' %}" style="font-size:22px;color:#ffc107;">Library Management System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#lmsnavbar" aria-controls="lmsnavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="lmsnavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'admin_home' %}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Books</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01" style="background:#ffc107;">
+              <li><a class="dropdown-item" href="{% url 'admin_addcategory' %}">Add Book Category</a></li>
+              <li><a class="dropdown-item" href="{% url 'admin_managecategories' %}">Manage Book Categories</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="{% url 'admin_addbook' %}">Add Book</a></li>
+              <li><a class="dropdown-item" href="{% url 'admin_managebooks' %}">Manage Books</a></li>
+              <hr class="dropdown-divider"> 
+              <li><a class="dropdown-item" href="{% url 'admin_issuebook' %}">Issue Book</a></li>
+              <li><a class="dropdown-item" href="{% url 'admin_manageissuebook' %}">Manage Issued Books</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Students</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01" style="background:#ffc107;">
+              <li><a class="dropdown-item" href="{% url 'admin_registerstudents' %}">Register Student</a></li>
+              <li><a class="dropdown-item" href="{% url 'admin_managestudents' %}">Manage Students</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'admin_changepassword' %}">Change Password</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+        	<a href="{% url 'users_logout' %}">
+        		<button type="button" class="btn btn-warning mx-2" onclick="return confirm('Are You Sure To Logout?');">{{request.user}} | Logout</button>
+        	</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+	<!--Navigation End-->
+  {% for msgs in messages %}
+  <div class="alert alert-{{msgs.tags}} mb-0 alert-dismissible fade show" role="alert">
+    Message! {{msgs}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+	<script src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+	<script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+</body>
+</html>

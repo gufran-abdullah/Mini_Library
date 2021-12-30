@@ -1,0 +1,50 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<!--Start Style-->
+<style>
+	.stdinp{
+		width: 80%;
+		height: 50px;
+		border-radius: 5px;
+	}
+	.stdbtn{
+		width: 150px;
+		background: #9d512c;
+		color:#fff;
+	}
+</style>
+<!--End Style-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin:4rem auto;">
+				<div class="card text-center">
+					<div class="card-header text-center text-white" style="background:#9d512c;">
+						<h3>Administration Login Form</h3>
+					</div>
+					<div class="card-body" style="background:lightblue;">
+						<div class="img">
+							<img src="{% static "images/admin.png" %}" alt="Admin Image" style="width:300px;height:300px;">
+						</div>
+						<form method="POST">
+							{% csrf_token %}
+							<div class="form-group">
+								<input type="text" name="uname" placeholder="Enter Your Username..." class="stdinp my-3" required>
+							</div> 
+							<div class="form-group">
+								<input type="password" name="pwd" placeholder="Enter Your Password..." class="stdinp my-3" required>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Login" class="stdbtn my-3">
+							</div>
+						</form>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% include 'footer.html' %}
+{% endblock %}

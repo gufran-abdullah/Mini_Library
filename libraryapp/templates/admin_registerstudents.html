@@ -1,0 +1,76 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<!--Start Style-->
+<style>
+	.stdinp{
+		width: 80%;
+		height: 50px;
+		border-radius: 5px;
+	}
+	.stdbtn{
+		width: 150px;
+		background: #9d512c;
+		color:#fff;
+	}
+</style>
+<!--End Style-->
+<!--Start Main Section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin:4rem auto;">
+				<div class="card">
+					<div class="card-header text-center text-white" style="background:#9d512c;">
+						<h3>Student Registeration Form</h3>
+					</div>
+					<div class="card-body" style="background:lightblue;">
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>First Name</strong></label>
+										<input type="text" name="fname" placeholder="Enter firstname..." class="form-control" required>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Last Name</strong></label>
+										<input type="text" name="lname" placeholder="Enter lastname..." class="form-control" required>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label><strong>Userame</strong></label>
+								<input type="text" name="uname" placeholder="Enter username..." class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label><strong>Password</strong></label>
+								<input type="password" name="pwd" placeholder="Enter password..." class="form-control" required>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Enrollmant Number</strong></label>
+										<input type="text" name="enrlno" placeholder="Enter enrollment#..." class="form-control" required>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label><strong>Branch</strong></label>
+										<input type="text" name="branch" placeholder="Enter branch..." class="form-control" required>
+									</div> 
+								</div>
+							</div>
+							<div class="form-group text-center my-4">
+								<input type="submit" value="Register" class="stdbtn">
+							</div>
+						</form>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+<!--End Main Section-->
+
+{% endblock %}

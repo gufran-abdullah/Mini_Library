@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% load static %}
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+	<script src="{% static "font/all.min.js" %}"></script>
+	<title>Library Management system</title>
+  <style>
+    .footerpara{
+    font-size: 30pt;
+    font-weight: bold;
+    color: #9d512c;
+    text-align: center;
+    }
+    .glow{
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    }
+    @-webkit-keyframes glow{
+    from{
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #9d512c, 0 0 40px #9d512c, 0 0 50px #9d512c, 0 0 60px #9d512c, 0 0 70px #9d512c;
+    }
+    to{
+    text-shadow: 0 0 20px #fff, 0 0 30px #ffc107, 0 0 40px #ffc107, 0 0 50px #ffc107, 0 0 60px #ffc107, 0 0 70px #ffc107, 0 0 80px #ffc107;
+    }
+    }
+  </style>
+</head>
+<body>
+
+<!--Start Footer-->
+  <div class="container">
+    <footer>
+      <p class="footerpara">
+        Copyright &copy; 
+        <script>
+          document.write(new Date().getFullYear()); 
+        </script>
+        All Rights Reserved <span style="color:brown;">|</span>
+        <span style="color:#ffc107;">
+          This Web Application is Made With
+          <i class="fas fa-heart text-warning"></i>
+          By <br>
+          <span class="glow">Mohammad Gufran Abdullah</span>
+        </span> 
+      </p>
+    </footer>
+  </div>
+<!--End Footer-->
+</body>
+</html>
